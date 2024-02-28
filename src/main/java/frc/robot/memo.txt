@@ -1,0 +1,98 @@
+This document stores the memo.
+Don't change it if unnecessary.
+
+--ID--
+ID hierarchy(devices):Motor controllers > Encoders > Gyros > Miscellaneous
+            (structures):Chassis > Arm > Intake
+
+IDs on 2024 robot:
+Swerve Mod 0 Driving Motor Controller(SparkMAX):10
+Swerve Mod 0 Rotating Motor Controller(SparkMAX):11
+Swerve Mod 0 Encoder(CANCoder):3
+Swerve Mod 1 Driving Motor Controller(SparkMAX):7
+Swerve Mod 1 Driving Motor Controller(SparkMAX):8
+Swerve Mod 1 Encoder(CANCoder):6
+Swerve Mod 2 Driving Motor Controller(SparkMAX):4
+Swerve Mod 2 Driving Motor Controller(SparkMAX):5
+Swerve Mod 2 Encoder(CANCoder):9
+Swerve Mod 3 Driving Motor Controller(SparkMAX):1
+Swerve Mod 3 Driving Motor Controller(SparkMAX):2
+Swerve Mod 3 Encoder(CANCoder):12
+Swerve Mod 0 Gyro(Pigeon 2):13
+Swerve Mod 1 Gyro(Pigeon 2):14
+Swerve Mod 2 Gyro(Pigeon 2):15
+Swerve Mod 3 Gyro(Pigeon 2):16
+Tilter Master Motor Controller(TalonFX):17
+Tilter Slave Motor Controller(TalonFX):18
+Tilter Encoder(CANCoder):19
+Intake Lower Master Motor Controller(SparkMAX):20
+Intake Lower Slave Motor Controller(SparkMAX):21
+Intake Upper Motor Controller(TalonSRX):22
+
+Extra IDs(not in Canbus):
+Tilter Limit Switch:1
+LED:9
+ColorSensor:I2C.kOnboard
+
+--Controller--
+-1P-
+Driver Inputs:
+LeftAxisX:Swerve X-Direction Moving
+LeftAxisY:Swerve Y-Direction Moving
+RightAxisX:Swerve Rotating(Will Be Disabled If Auto Is On & Apriltag Detected)
+
+LeftBumper:Swerve Field Oriented Mode On/Off
+RightBumper:Swerve Slow Mode On/Off
+BackButton:Swerve Reset Gyro To 0
+StartButton:Super Structure Shoot(Requires Holding)
+
+AButton:Super Structure Auto Mode On/Off(If On & Apriltag Detected, Driver Rotating Will Be Disabled)
+BButton:Super Structure Base Mode On/Off(Will Set Tilter & Intake To Base-Reserved Value)
+XButton:Super Structure Podium Mode On/Off(Will Set Tilter & Intake To Podium-Reserved Value)
+YButton:Super Structure Floor Mode On/Off(Will Set Tilter & Intake To Floor-Reserved Value, If Loaded The Claimer Won't Respond)
+
+LeftTrigger:Super Structure Amplifier Mode On/Off(Will Set Tilter & Intake To Amplifier-Reserved Value, If On & Apriltag Detected, Driver Rotating Will Be Disabled)
+RightTrigger:Super Structure Idle Mode On/Off(Will Set Tilter & Intake To Idle-Reserved Value)
+
+
+Driver Notifications:
+Left Side Rumble:Note Loaded, Stop Claimer
+Right Side Rumble:Apriltag Detected/Lost, Rotate Disabled/Enabled(Detected And Disabled First)
+
+
+
+-2P-
+Driver Inputs:
+LeftAxisX:Swerve X-Direction Moving
+LeftAxisY:Swerve Y-Direction Moving
+RightAxisX:Swerve Rotating(Will Be Disabled If Auto Is On & Apriltag Detected)
+LeftBumper:Swerve Field Oriented Mode On/Off
+RightBumper:Swerve Slow Mode On/Off
+BackButton:Swerve Reset Gyro To 0
+
+
+Driver Notifications:
+Left Side Rumble:Apriltag Lost Or Auto Turned Off, Rotate Enabled
+Right Side Rumble:Apriltag Detected, Rotate Disabled
+
+
+Operator Inputs:
+LeftAxisY:Tilter Manually Controlling(Only Enabled When Turn On Manual Control)
+RightAxisY:Shooter Manually Controlling(Only Enabled When Turn On Manual Control)
+LeftTrigger:Claimer Manually Positive Controlling(Only Enabled When Turn On Manual Control)
+RightTrigger:Claimer Manually Negative Controlling(Only Enabled When Turn On Manual Control)
+
+AButton:Super Structure Auto Mode On/Off(If On & Apriltag Detected, Driver Rotating Will Be Disabled)
+BButton:Super Structure Base Mode On/Off(Will Set Tilter & Intake To Base-Reserved Value)
+XButton:Super Structure Podium Mode On/Off(Will Set Tilter & Intake To Podium-Reserved Value)
+YButton:Super Structure Floor Mode On/Off(Will Set Tilter & Intake To Floor-Reserved Value, If Loaded The Claimer Won't Respond)
+
+LeftBumperButton:Super Structure Amplifier Mode On/Off(Will Set Tilter & Intake To Amplifier-Reserved Value, If On & Apriltag Detected, Driver Rotating Will Be Disabled)
+RightBumperButton:Super Structure Idle Mode On/Off(Will Set Tilter & Intake To Idle-Reserved Value)
+BackButton:Super Structure Manual Control Mode On/Off(Will Enable Manual-Controlling Relative Buttons)
+StartButton:Super Structure Shoot(Requires Holding)
+
+
+Operator Notifications:
+Left Side Rumble:Request Mode Operate Successfully, Can Shoot
+Right Side Rumble:Note Loaded, Stop Intake Upper Motor

@@ -97,7 +97,10 @@ public class TeleopControl2P extends Command {
 
     // Operator
     Constants.Upper.UpperVariables.manualTilterSpeed = -MathUtil.applyDeadband(operator.getLeftY(), Constants.Joystick.axisDeadBand) * Constants.Upper.UpperConstants.tilterAutoMaxSpeed;
-    Constants.Upper.UpperVariables.manualIntakeSpeed = -MathUtil.applyDeadband(operator.getRightY(), Constants.Joystick.axisDeadBand) * Constants.Upper.UpperConstants.intakeShootingSpeed;
+    Constants.Upper.UpperVariables.manualIntakeShootingSpeed = -MathUtil.applyDeadband(operator.getRightY(), Constants.Joystick.axisDeadBand) * Constants.Upper.UpperConstants.intakeShootingSpeed;
+    Constants.Upper.UpperVariables.manualIntakeClaimingSpeed = (MathUtil.applyDeadband(operator.getLeftTriggerAxis(), Constants.Joystick.axisDeadBand) - 
+                                                                MathUtil.applyDeadband(operator.getRightTriggerAxis(), Constants.Joystick.axisDeadBand)) * 
+                                                                Constants.Upper.UpperConstants.intakeClaimingSpeed;
 
     /* Buttons */
     // Driver
@@ -131,11 +134,12 @@ public class TeleopControl2P extends Command {
     if(operator.getYButton()) s_Upper.setState(UpperState.floor);
     if(operator.getLeftBumper()) s_Upper.setState(UpperState.amp);
     if(operator.getRightBumper()) s_Upper.setState(UpperState.idle);
-
-    if(operator.getStartButtonPressed() && onePressManual == false){
+    if(operator.getStartButtonPressed()) s_Upper.setIntakeClaiming(Constants.Upper.UpperConstants.intakeClaimingSpeed);
+    if(operator.getStartButtonReleased()) s_Upper.setIntakeClaiming(0);
+    if(operator.getBackButtonPressed() && onePressManual == false){
       Constants.Upper.UpperVariables.isManual = !Constants.Upper.UpperVariables.isManual;
       onePressManual = true;
-    } else if(operator.getStartButtonReleased()) {
+    } else if(operator.getBackButtonReleased()) {
       onePressManual = false;
     }
 

@@ -243,7 +243,8 @@ public final class Constants {
 
       /* Manual Controlling */
       public static double manualTilterSpeed = 0;
-      public static double manualIntakeSpeed = 0;
+      public static double manualIntakeShootingSpeed = 0;
+      public static double manualIntakeClaimingSpeed = 0;
     }
   }
   

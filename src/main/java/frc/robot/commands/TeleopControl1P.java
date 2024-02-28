@@ -100,14 +100,9 @@ public class TeleopControl1P extends Command {
       onePressSlow = false;
     }
 
-    if (driver.getStartButtonPressed() && onePressRainbow == false) {
-      Constants.LED.LEDVariables.rainbow = !Constants.LED.LEDVariables.rainbow;
-      onePressSlow = true;
-    }else if (driver.getStartButtonReleased()) {
-      onePressSlow = false;
-    }
-
     if(driver.getBackButton()) s_Swerve.zeroGyro();
+    if(driver.getStartButtonPressed()) s_Upper.setIntakeClaiming(Constants.Upper.UpperConstants.intakeClaimingSpeed);
+    if(driver.getStartButtonReleased()) s_Upper.setIntakeClaiming(0);
     if(driver.getAButton()) s_Upper.setState(UpperState.auto);
     if(driver.getBButton()) s_Upper.setState(UpperState.base);
     if(driver.getXButton()) s_Upper.setState(UpperState.podium);

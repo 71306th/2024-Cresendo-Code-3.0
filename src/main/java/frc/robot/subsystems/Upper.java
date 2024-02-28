@@ -208,7 +208,8 @@ public class Upper extends SubsystemBase {
         break;
       case manual:
         tilterOutput = Constants.Upper.UpperVariables.manualTilterSpeed;
-        intakeOutput = Constants.Upper.UpperVariables.manualIntakeSpeed;
+        intakeOutput = Constants.Upper.UpperVariables.manualIntakeShootingSpeed;
+        setIntakeClaiming(Constants.Upper.UpperVariables.manualIntakeClaimingSpeed);
         if(tilterOutput == 0) lockTilter(getTilterAngle());
         Constants.Upper.UpperVariables.isAuto = false;
         Constants.Upper.UpperVariables.isAmp = false;
@@ -250,7 +251,8 @@ public class Upper extends SubsystemBase {
     SmartDashboard.putNumber("tilterSpeed", tilterOutput);
     SmartDashboard.putNumber("tilterDEG", getTilterAngle());
     SmartDashboard.putBoolean("tilterIsInPlace", Constants.Upper.UpperVariables.isInPlace);
-    SmartDashboard.putNumber("intakeSpeed", intakeOutput);
+    SmartDashboard.putNumber("shooterSpeed", intakeOutput);
+    SmartDashboard.putNumber("claimerSpeed", Constants.Upper.UpperVariables.manualIntakeClaimingSpeed);
     SmartDashboard.putString("state", getState().toString());
   }
 }
